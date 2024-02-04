@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elusive Button</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            
+            height: 100vh;
+        }
+        #runaway-btn {
+            position: absolute;
+            top: 70%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+            color: white;
+            background-color: rgb(185, 5, 5);
+        }
+        #runaway-btn2 {
+            position: absolute;
+            top: 70%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+            background-color: green;
+            color: white;
+        }
+        .spune_da{
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .intrebare{
+            font-family: Roboto;
+            font-weight: 60%;
+            font-size: 20px;
+            position: absolute;
+            top: 55%;
+            left: 51.5%;
+            transform: translate(-50%, -50%);
+        }
+        .poza-inceput{
+            font-family: Roboto;
+            font-weight: 60%;
+            font-size: 20px;
+            position: absolute;
+            top: 30%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+            height: 300px;
+        }
+    </style>
+    <!-- Include Anime.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Rethink+Sans:ital,wght@0,400;0,500;1,400&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="./poze/ositos.gif" alt="" class="poza-inceput">
+    <img src="./poze/flori_da.gif" alt="" class="spune_da">
+    <p class="intrebare">Vrei sa iesi cu mine? &#129402; &#128073; &#128072;</p>
+<button id='runaway-btn2'>Yes &#10084;</button>
+<button id='runaway-btn'>No</button>
+
+<script>
+    const button = document.getElementById('runaway-btn');
+
+    const animateMove = (element, prop, pixels) => anime({
+        targets: element,
+        [prop]: pixels + "px",
+        easing: "easeOutCirc",
+        duration: 800 // You can adjust the duration for slower movement
+    });
+
+    ["mouseover", "click"].forEach(function (el) {
+        button.addEventListener(el, function () {
+            const top = getRandomNumber(window.innerHeight - this.offsetHeight);
+            const left = getRandomNumber(window.innerWidth - this.offsetWidth);
+
+            animateMove(this, "top", top);
+            animateMove(this, "left", left);
+        });
+    });
+
+    const getRandomNumber = (num) => {
+        return Math.floor(Math.random() * num);
+    };
+
+    const text = document.querySelector('.intrebare');
+    const butonDa = document.querySelector('#runaway-btn2');
+    const poza = document.querySelector('.spune_da');
+    const pozaInceput = document.querySelector('.poza-inceput');
+    butonDa.addEventListener('click', () => {
+        text.innerHTML = 'YAAAYYYY AI ZIS DAAAA';
+        text.style.left = '50%';
+        poza.style.display = 'block'
+        pozaInceput.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
